@@ -1,17 +1,25 @@
 <script>
 	export let name;
-	import TodoCard from 'TodoCard.svelte';
+	import TodoCard from './TodoCard.svelte';
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
+	<div >
+		<img src="images/guinea-pig.png" alt="cute guinea pig">
+		<h1>Hello {name}!</h1>
+	</div>
 
-	<TodoCard>
-		<h2>Rensa ogräs</h2>
-		<p>Uppskattad tid</p>
+
+	<TodoCard>		
+		<h2 slot="title">Rensa ogräs</h2>
+		<p slot="task">Uppskattad tid: 1 timme</p>
 	</TodoCard>
-
+	<TodoCard>		
+		<h2 slot="title">Förbereda bädd A2</h2>
+		<p slot="task">Uppskattad tid: 3 timmar</p>
+	</TodoCard>
 </main>
+
 
 <style>
 	main {
@@ -24,8 +32,14 @@
 	h1 {
 		color: #ff3e00;
 		text-transform: uppercase;
-		font-size: 4em;
+		font-size: 4rem;
 		font-weight: 100;
+	}
+	h2 {
+        font-size: 1.2rem;
+    }
+	img {
+		width: 5rem;
 	}
 
 	@media (min-width: 640px) {
