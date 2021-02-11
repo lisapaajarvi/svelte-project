@@ -1,11 +1,16 @@
 <script>
 	export let name;
+	import TodoCard from 'TodoCard.svelte';
 </script>
 
 <main>
 	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-	
+
+	<TodoCard>
+		<h2>Rensa ogräs</h2>
+		<p>Uppskattad tid</p>
+	</TodoCard>
+
 </main>
 
 <style>
@@ -13,7 +18,7 @@
 		text-align: center;
 		padding: 1em;
 		max-width: 240px;
-		margin: 0 auto;
+		background-color: green;
 	}
 
 	h1 {
