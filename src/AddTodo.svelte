@@ -20,7 +20,6 @@
     }
   </style>
   
-  <!-- When submitting, prevent the default action which would result in a refreshed page -->
   <form on:submit={handleSubmit(fields)}>
       <!-- Loop the fields and render the correct representation based on field.type -->
       {#each fields as field}

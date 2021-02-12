@@ -3,7 +3,6 @@
 	export let name;
 	import TodoCard from './TodoCard.svelte';
 	import AddTodo from "./AddTodo.svelte"
-	import Date from './Date.svelte';
 
 	let todolist = JSON.parse(localStorage.getItem("todolist"))
 	if (todolist === null || undefined) {
@@ -65,32 +64,33 @@
   ];
   let newTodo = {};
 
-  function handleClick(i){
-	  console.log("klickade " + i);
+  function handleClick(){
+	  console.log("klickade ");
+  } 
+  function handleClick2(){
+	  console.log("klickade toppen");
   } 
 </script>
 
 <main>
 	<div >
 		<img src="images/guinea-pig.png" alt="cute guinea pig">
-		<h1>Välkommen {name}!</h1>
+		<h1 on:click={handleClick2}>Välkommen {name}!</h1>
 	</div>
 
-	{#each todolist as { date, colour, title, description, time }, i }	
-		<TodoCard on:click={handleClick(i)}>
+	{#each todolist as { date, colour, title, description, time } }	
+		<TodoCard>
 			<span slot="date">{date}</span>		
 			<span slot="colour">{colour}</span>	
 			<span slot="title">{title}</span>
 			<span slot="description">{description}</span>
 			<p slot="time">{time}</p>
 		</TodoCard>
-
 	{/each}
 
 	<AddTodo
 	onSubmit={(result) => {
 	  newTodo = result;
-	  console.log(newTodo);
 	  todolist.push(newTodo)
 	  localStorage.setItem("todolist", JSON.stringify(todolist))
 	}}
@@ -108,7 +108,6 @@
 		background-color: green;
 	}
 	
-
 	h1 {
 		color: #70e91f;
 		font-size: 4rem;
