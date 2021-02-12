@@ -1,11 +1,8 @@
 <script>
-
-import App from "./App.svelte";
-
 </script>
 <style>
 	.todo {
-		width: 300px;
+		width: 400px;
 		border: 3px solid white;
 		border-radius: 10px;
 		box-shadow: 2px 2px 8px black;
@@ -44,10 +41,11 @@ import App from "./App.svelte";
 
 <div class="todo">
     <div class="title-div">
-        <div class="color"></div>
+        <div class="color"><slot name="colour"></slot></div>
         <h2><slot name="title"></slot></h2>
     </div>
 	<p><slot name="description"></slot></p>
+    <p><slot name="date"></slot></p>
     <div class="time-est">
         <slot name="time"></slot>
     </div>

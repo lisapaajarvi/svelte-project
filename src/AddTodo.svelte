@@ -5,13 +5,13 @@
     export let onSubmit;
     export let fields;
 
-    // Convert fields from [ { name: 'name', value: 'Value' } ] to { name : Value } which is more useful when submitting a form
+    // Converts fields to objects
     const fieldsToObject = (fields) =>
       fields.reduce((p, c) => ({ ...p, [c.id]: c.value }), {});
 
     // When submitting, turn our fields representation into a JSON body
     const handleSubmit = () => onSubmit(fieldsToObject(fields));
-    
+
   </script>
   
   <style>
@@ -21,7 +21,7 @@
   </style>
   
   <!-- When submitting, prevent the default action which would result in a refreshed page -->
-  <form on:submit|preventDefault={() => handleSubmit(fields)}>
+  <form on:submit={handleSubmit(fields)}>
       <!-- Loop the fields and render the correct representation based on field.type -->
       {#each fields as field}
           {#if field.type === "Input"}

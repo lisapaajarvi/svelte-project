@@ -7,16 +7,15 @@
 
 	let todolist = JSON.parse(localStorage.getItem("todolist"))
 	if (todolist === null || undefined) {
-    todolist = [{"date": "2021-02-12", "colour": "röd", "title":"Rensa ogräs A5", "description":"Grovrensa bland lupinerna", "time": 2}];
+    todolist = [];
 	}
-	console.log(todolist)
 
   //   Our field representation, let's us easily specify several inputs
   let fields = [
 	{
 		id: "date",
 		type: "Date",
-		value: "",
+		value: "2021-02-12",
 		label: "Välj datum"
 	},
 	{
@@ -73,18 +72,16 @@
 		<h1>Välkommen {name}!</h1>
 	</div>
 
+	{#each todolist as { date, colour, title, description, time }}
+		<TodoCard>
+			<span slot="date">{date}</span>		
+			<span slot="colour">{colour}</span>	
+			<span slot="title">{title}</span>
+			<span slot="description">{description}</span>
+			<p slot="time">{time}</p>
+	</TodoCard>
+	{/each}
 
-	<TodoCard>		
-		<span slot="title">Rensa ogräs A5</span>
-		<span slot="description">Grovrensa bland lupinerna.</span>
-		<p slot="time">0/2</p>
-	</TodoCard>
-	<TodoCard>		
-		<span slot="title">Förbereda A2</span>
-		<span slot="description">Gräva och rensa bort ogräsrötter i bädd A2. 	
-		</span>
-		<p slot="time">1/3</p>
-	</TodoCard>
 	<AddTodo
 	onSubmit={(body) => {
 	  result = body;
