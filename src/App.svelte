@@ -11,12 +11,15 @@
 
 
 	<TodoCard>		
-		<h2 slot="title">Rensa ogräs</h2>
-		<p slot="task">Uppskattad tid: 1 timme</p>
+		<span slot="title">Rensa ogräs A5</span>
+		<span slot="description">Grovrensa bland lupinerna.</span>
+		<p slot="time">0/2</p>
 	</TodoCard>
 	<TodoCard>		
-		<h2 slot="title">Förbereda bädd A2</h2>
-		<p slot="task">Uppskattad tid: 3 timmar</p>
+		<span slot="title">Förbereda A2</span>
+		<span slot="description">Gräva och rensa bort ogräsrötter i bädd A2. 	
+		</span>
+		<p slot="time">1/3</p>
 	</TodoCard>
 </main>
 

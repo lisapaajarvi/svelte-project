@@ -12,23 +12,43 @@ import App from "./App.svelte";
 		padding: 1rem;
 		margin: 1rem;
         background-color: lightgreen;
+        text-align: left;
+        position: relative;
 	}
     .title-div {
         display: flex;
         flex-direction: row;
         justify-content: start;
+        align-items: center;
     }
-    img {
-        height: 4rem;
+    .color {
+        width: 1.5rem;
+        height: 1.5rem;
+        border: .2rem solid white;
+        border-radius: .2rem;
+        background-color: red;
         margin: 0 1rem;
+    }
+    .time-est {
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        border-radius: .2rem;
+        text-align: center;
+        font-weight: bold;
     }
 
 </style>
 
 <div class="todo">
     <div class="title-div">
-        <img src= 'images/guinea-pig.png' alt="cute guinea pig">
-        <slot name="title"></slot>
+        <div class="color"></div>
+        <h2><slot name="title"></slot></h2>
     </div>
-	<slot name="task"></slot>
+	<p><slot name="description"></slot></p>
+    <div class="time-est">
+        <slot name="time"></slot>
+    </div>
 </div>
