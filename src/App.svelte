@@ -26,7 +26,7 @@
 		options: [
 			{ label: "Rensning", value: "röd"  },
 			{ label: "Sådd", value: "blå" },
-			{ label: "Förberedelser", value: "lila" },
+			{ label: "Förberedelser", value: "lila"},
 			{ label: "Plantering", value: "gul" },
 			{ label: "Skörd", value: "orange" },
 			{ label: "Vattning", value: "turkos" },
@@ -63,7 +63,11 @@
       ],
     },
   ];
-  let result = {};
+  let newTodo = {};
+
+  function handleClick(i){
+	  console.log("klickade " + i);
+  } 
 </script>
 
 <main>
@@ -72,25 +76,27 @@
 		<h1>Välkommen {name}!</h1>
 	</div>
 
-	{#each todolist as { date, colour, title, description, time }}
-		<TodoCard>
+	{#each todolist as { date, colour, title, description, time }, i }	
+		<TodoCard on:click={handleClick(i)}>
 			<span slot="date">{date}</span>		
 			<span slot="colour">{colour}</span>	
 			<span slot="title">{title}</span>
 			<span slot="description">{description}</span>
 			<p slot="time">{time}</p>
-	</TodoCard>
+		</TodoCard>
+
 	{/each}
 
 	<AddTodo
-	onSubmit={(body) => {
-	  result = body;
-	  console.log(result);
-	  todolist.push(result)
+	onSubmit={(result) => {
+	  newTodo = result;
+	  console.log(newTodo);
+	  todolist.push(newTodo)
 	  localStorage.setItem("todolist", JSON.stringify(todolist))
 	}}
 	{fields} />
   
+
 </main>
 
 
@@ -101,6 +107,7 @@
 		max-width: 240px;
 		background-color: green;
 	}
+	
 
 	h1 {
 		color: #70e91f;
