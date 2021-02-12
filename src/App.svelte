@@ -1,12 +1,76 @@
+
 <script>
 	export let name;
 	import TodoCard from './TodoCard.svelte';
+	import AddTodo from "./AddTodo.svelte"
+	import Date from './Date.svelte';
+
+	let todolist = JSON.parse(localStorage.getItem("todolist"))
+	if (todolist === null || undefined) {
+    todolist = [{"date": "2021-02-12", "colour": "röd", "title":"Rensa ogräs A5", "description":"Grovrensa bland lupinerna", "time": 2}];
+	}
+	console.log(todolist)
+
+  //   Our field representation, let's us easily specify several inputs
+  let fields = [
+	{
+		id: "date",
+		type: "Date",
+		value: "",
+		label: "Välj datum"
+	},
+	{
+		id: "colour",
+		type: "Select",
+		value: "röd",
+		label: "Välj område",
+		options: [
+			{ label: "Rensning", value: "röd"  },
+			{ label: "Sådd", value: "blå" },
+			{ label: "Förberedelser", value: "lila" },
+			{ label: "Plantering", value: "gul" },
+			{ label: "Skörd", value: "orange" },
+			{ label: "Vattning", value: "turkos" },
+			{ label: "Skadedjursbekämpning", value: "svart" },
+			{ label: "Gödsel", value: "rosa" },
+			{ label: "Övrigt", value: "lime" },
+		]	
+	},
+    {
+      id: "title",
+      type: "Input",
+      value: "",
+      placeholder: "Skriv uppgiftens titel",
+      label: "Uppgift",
+    },
+    {
+      id: "description",
+      type: "Input",
+      value: "",
+      placeholder: "Skriv mer information om uppgiften",
+      label: "Information",
+    },
+    {
+      id: "time",
+      type: "Select",
+      value: 1,
+      label: "Välj tidsenheter",
+      options: [
+        { label: 1, value: 1 },
+        { label: 2, value: 2 },
+        { label: 3, value: 3 },
+		{ label: 4, value: 4 },
+        { label: 5, value: 5 },
+      ],
+    },
+  ];
+  let result = {};
 </script>
 
 <main>
 	<div >
 		<img src="images/guinea-pig.png" alt="cute guinea pig">
-		<h1>Hello {name}!</h1>
+		<h1>Välkommen {name}!</h1>
 	</div>
 
 
@@ -21,6 +85,15 @@
 		</span>
 		<p slot="time">1/3</p>
 	</TodoCard>
+	<AddTodo
+	onSubmit={(body) => {
+	  result = body;
+	  console.log(result);
+	  todolist.push(result)
+	  localStorage.setItem("todolist", JSON.stringify(todolist))
+	}}
+	{fields} />
+  
 </main>
 
 
@@ -33,14 +106,11 @@
 	}
 
 	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
+		color: #70e91f;
 		font-size: 4rem;
 		font-weight: 100;
 	}
-	h2 {
-        font-size: 1.2rem;
-    }
+
 	img {
 		width: 5rem;
 	}
