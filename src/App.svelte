@@ -9,7 +9,7 @@
     todolist = [];
 	}
 
-  //   Our field representation, let's us easily specify several inputs
+  //   Input fields for todolist
   let fields = [
 	{
 		id: "date",
@@ -45,14 +45,14 @@
       id: "description",
       type: "Input",
       value: "",
-      placeholder: "Skriv mer information om uppgiften",
-      label: "Information",
+      placeholder: "Beskrivning av uppgiften",
+      label: "Beskrivning",
     },
     {
       id: "time",
       type: "Select",
       value: 1,
-      label: "Välj tidsenheter",
+      label: "Välj tidsenheter (30 min)",
       options: [
         { label: 1, value: 1 },
         { label: 2, value: 2 },
