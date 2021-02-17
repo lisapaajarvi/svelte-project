@@ -2,7 +2,7 @@
     import Input from "./Input.svelte";
     import Select from "./Select.svelte";
     import Date from "./Date.svelte";
-    export let onSubmit;
+      export let onSubmit;
 
     // Converts fields to objects
     const fieldsToObject = (fields) =>
@@ -66,12 +66,6 @@
     },
   ];
   </script>
-  
-  <style>
-    Input, select {
-      margin: 5px;
-    }
-  </style>
   
   <form on:submit={handleSubmit(fields)}>
       <!-- Loop the fields and render the correct representation based on field.type -->

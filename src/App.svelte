@@ -10,18 +10,12 @@
     todolist = [];
 	}
 
-  
-  let newTodo = {};
-
-  function handleClick2(){
-	  console.log("klickade");
-  } 
 </script>
 
 <main>
 	<div >
 		<img src="images/guinea-pig.png" alt="cute guinea pig">
-		<h1 on:click={handleClick2}>Välkommen {name}!</h1>
+		<h1>Välkommen {name}!</h1>
 	</div>
 
 	{#each todolist as { date, colour, title, description, time } }	
@@ -36,7 +30,7 @@
 
 	<AddTodo
 	onSubmit={(result) => {
-	  newTodo = result;
+	  let newTodo = result;
 	  todolist.push(newTodo)
 	  localStorage.setItem("todolist", JSON.stringify(todolist))
 	}}
