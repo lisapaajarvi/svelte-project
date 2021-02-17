@@ -2,16 +2,15 @@
     import Input from "./Input.svelte";
     import Select from "./Select.svelte";
     import Date from "./Date.svelte";
-      export let onSubmit;
+    export let onSubmit;
 
     // Converts fields to objects
     const fieldsToObject = (fields) =>
       fields.reduce((p, c) => ({ ...p, [c.id]: c.value }), {});
 
-    // When submitting, turn our fields representation into a JSON body
     const handleSubmit = () => onSubmit(fieldsToObject(fields));
 
-    //   Input fields for todolist
+  //   List of input fields for the todolist
 
   let fields = [
 	{
@@ -21,7 +20,7 @@
 		label: "Välj datum"
 	},
 	{
-		id: "colour",
+		id: "color",
 		type: "Select",
 		value: "röd",
 		label: "Välj område",
@@ -72,8 +71,10 @@
       {#each fields as field}
           {#if field.type === "Input"}
               <Input bind:value={field.value} id={field.id} label={field.label} placeholder={field.placeholder} />
+
           {:else if field.type === "Select"}
               <Select bind:value={field.value} id={field.id} label={field.label} options={field.options}/>
+
           {:else if field.type === "Date"}
             <Date bind:value={field.value} id={field.id} label={field.label}/>
           {/if}

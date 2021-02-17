@@ -11,41 +11,52 @@
 	}
 
 </script>
-
+<header>
+	<img src="images/guinea-pig.png" alt="cute guinea pig">
+	<h1>Välkommen {name}!</h1>
+</header>
 <main>
-	<div >
-		<img src="images/guinea-pig.png" alt="cute guinea pig">
-		<h1>Välkommen {name}!</h1>
+	<div class="todo-container">
+		{#each todolist as { date, colour, title, description, time } }	
+			<TodoCard>
+				<span slot="date">{date}</span>		
+				<span slot="colour">{colour}</span>	
+				<span slot="title">{title}</span>
+				<span slot="description">{description}</span>
+				<p slot="time">{time}</p>
+			</TodoCard>
+		{/each}
 	</div>
 
-	{#each todolist as { date, colour, title, description, time } }	
-		<TodoCard>
-			<span slot="date">{date}</span>		
-			<span slot="colour">{colour}</span>	
-			<span slot="title">{title}</span>
-			<span slot="description">{description}</span>
-			<p slot="time">{time}</p>
-		</TodoCard>
-	{/each}
-
-	<AddTodo
-	onSubmit={(result) => {
-	  let newTodo = result;
-	  todolist.push(newTodo)
-	  localStorage.setItem("todolist", JSON.stringify(todolist))
-	}}
-	{fields} />
+	<div class="todo-form">
+		<AddTodo
+		onSubmit={(result) => {
+		let newTodo = result;
+		todolist.push(newTodo)
+		localStorage.setItem("todolist", JSON.stringify(todolist))
+		}}
+		{fields} />
+	</div>
   
-
 </main>
 
 
 <style>
-	main {
+
+	header {
 		text-align: center;
-		padding: 1em;
-		max-width: 240px;
+		padding: 1rem;
 		background-color: green;
+	}
+	main {
+		padding: 1rem;
+		background-color: green;
+		display: flex;
+		justify-content: space-around;
+	}
+
+	.todo-form {
+		color: #70e91f;
 	}
 	
 	h1 {
@@ -53,7 +64,6 @@
 		font-size: 4rem;
 		font-weight: 100;
 	}
-
 	img {
 		width: 5rem;
 	}

@@ -16,7 +16,7 @@
     .title-div {
         display: flex;
         flex-direction: row;
-        justify-content: start;
+        justify-content: space-between;
         align-items: center;
     }
     .color {
