@@ -1,7 +1,5 @@
 <script>
-    function handleClick(event) {
-        console.log("klickade " + event)
-    }
+
 </script>
 <style>
 	.todo {
@@ -42,10 +40,11 @@
 
 </style>
 
-<div class="todo" on:click={handleClick}>
+<div class="todo">
     <div class="title-div">
         <div class="color"><slot name="colour"></slot></div>
         <h2><slot name="title"></slot></h2>
+        <button>X</button>
     </div>
 	<p><slot name="description"></slot></p>
     <p><slot name="date"></slot></p>

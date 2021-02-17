@@ -11,3 +11,9 @@
       <option value={option.value}>{option.label}</option>
     {/each}
   </select>
+
+  <style>
+    select {
+      margin: .5rem;
+    }
+  </style>

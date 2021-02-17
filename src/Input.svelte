@@ -7,3 +7,9 @@
   
   <label for={id}>{label}</label>
   <input bind:value {placeholder} {id} type="text" />
+
+  <style>
+    input {
+      margin: .5rem;
+    }
+  </style>
