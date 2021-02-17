@@ -2,6 +2,9 @@
 
 </script>
 <style>
+    *  {
+        box-sizing: border-box;
+    }
 	.todo {
 		width: 400px;
 		border: 3px solid white;
@@ -20,12 +23,11 @@
         align-items: center;
     }
     .color {
-        width: 1.5rem;
-        height: 1.5rem;
+        width: 2rem;
+        height: 2rem;
         border: .2rem solid white;
         border-radius: .2rem;
         background-color: red;
-        margin: 0 1rem;
     }
     .time-est {
         width: 2rem;
@@ -36,6 +38,15 @@
         border-radius: .2rem;
         text-align: center;
         font-weight: bold;
+    }
+    button {
+        height: 2rem;
+        width: 2rem;
+        border-radius: .2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
     }
 
 </style>

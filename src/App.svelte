@@ -2,8 +2,8 @@
 <script>
 	export let name;
 	import TodoCard from './TodoCard.svelte';
-	import AddTodo from "./AddTodo.svelte"
-	import fields from "./AddTodo.svelte"
+	import TodoForm from "./TodoForm.svelte"
+	import fields from "./TodoForm.svelte"
 
 	let todolist = JSON.parse(localStorage.getItem("todolist"))
 	if (todolist === null || undefined) {
@@ -17,25 +17,25 @@
 </header>
 <main>
 	<div class="todo-container">
-		{#each todolist as { date, colour, title, description, time } }	
-			<TodoCard>
-				<span slot="date">{date}</span>		
-				<span slot="colour">{colour}</span>	
-				<span slot="title">{title}</span>
-				<span slot="description">{description}</span>
-				<p slot="time">{time}</p>
+		{#each todolist as item, i }	
+			<TodoCard {item}>
+				<span slot="date">{item.date}</span>		
+				<span slot="color">{item.color}</span>	
+				<span slot="title">{item.title}</span>
+				<span slot="description">{item.description}</span>
+				<p slot="time">{item.time}</p>
 			</TodoCard>
 		{/each}
 	</div>
 
 	<div class="todo-form">
-		<AddTodo
+		<TodoForm
 		onSubmit={(result) => {
 		let newTodo = result;
 		todolist.push(newTodo)
 		localStorage.setItem("todolist", JSON.stringify(todolist))
 		}}
-		{fields} />
+		/>
 	</div>
   
 </main>
