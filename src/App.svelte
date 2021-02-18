@@ -3,21 +3,20 @@
 	export let name;
 	import TodoCard from './TodoCard.svelte';
 	import TodoForm from "./TodoForm.svelte"
-	import fields from "./TodoForm.svelte"
 
 	let todolist = JSON.parse(localStorage.getItem("todolist"))
 	if (todolist === null || undefined) {
     todolist = [];
 	}
-
 </script>
+
 <header>
 	<img src="images/guinea-pig.png" alt="cute guinea pig">
 	<h1>Välkommen {name}!</h1>
 </header>
 <main>
 	<div class="todo-container">
-		{#each todolist as item, i }	
+		{#each todolist as item}	
 			<TodoCard {item}>
 				<span slot="date">{item.date}</span>		
 				<span slot="color">{item.color}</span>	

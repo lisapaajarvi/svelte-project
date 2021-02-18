@@ -1,5 +1,4 @@
 <script>
-
 </script>
 <style>
     *  {
@@ -53,7 +52,7 @@
 
 <div class="todo">
     <div class="title-div">
-        <div class="color"><slot name="colour"></slot></div>
+        <div class="color"><slot name="color"></slot></div>
         <h2><slot name="title"></slot></h2>
         <button>X</button>
     </div>

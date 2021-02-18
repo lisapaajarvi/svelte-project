@@ -1,39 +1,31 @@
 <script>
-    import Input from "./Input.svelte";
-    import Select from "./Select.svelte";
-    import Date from "./Date.svelte";
-    export let onSubmit;
-
-    // Converts fields to objects
-    const fieldsToObject = (fields) =>
-      fields.reduce((p, c) => ({ ...p, [c.id]: c.value }), {});
-
-    const handleSubmit = () => onSubmit(fieldsToObject(fields));
-
-  //   List of input fields for the todolist
+  import Input from "./Input.svelte";
+  import Select from "./Select.svelte";
+  import Date from "./Date.svelte";
+  export let onSubmit;
 
   let fields = [
 	{
 		id: "date",
 		type: "Date",
-		value: "2021-02-12",
+		value: "2021-02-18",
 		label: "Välj datum"
 	},
 	{
 		id: "color",
 		type: "Select",
-		value: "röd",
+		value: "red",
 		label: "Välj område",
 		options: [
-			{ label: "Rensning", value: "röd"  },
-			{ label: "Sådd", value: "blå" },
-			{ label: "Förberedelser", value: "lila"},
-			{ label: "Plantering", value: "gul" },
-			{ label: "Skörd", value: "orange" },
-			{ label: "Vattning", value: "turkos" },
-			{ label: "Skadedjursbekämpning", value: "svart" },
-			{ label: "Gödsel", value: "rosa" },
-			{ label: "Övrigt", value: "lime" },
+			{ label: "Rensning", value: "red"  },
+			{ label: "Sådd", value: "blue" },
+			{ label: "Förberedelser", value: "yellow"},
+			{ label: "Plantering", value: "orange" },
+			{ label: "Skörd", value: "pink" },
+			{ label: "Vattning", value: "lime" },
+			{ label: "Skadedjursbekämpning", value: "black" },
+			{ label: "Gödsel", value: "purple" },
+			{ label: "Övrigt", value: "teal" },
 		]	
 	},
     {
@@ -59,11 +51,18 @@
         { label: 1, value: 1 },
         { label: 2, value: 2 },
         { label: 3, value: 3 },
-		{ label: 4, value: 4 },
+		    { label: 4, value: 4 },
         { label: 5, value: 5 },
       ],
     },
   ];
+
+      // Converts fields to objects
+    const fieldsToObject = (fields) =>
+    fields.reduce((p, c) => ({ ...p, [c.id]: c.value }), {});
+
+    const handleSubmit = () => onSubmit(fieldsToObject(fields));
+
   </script>
   
   <form on:submit={handleSubmit(fields)}>
