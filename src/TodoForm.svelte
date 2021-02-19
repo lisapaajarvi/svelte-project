@@ -66,17 +66,18 @@
   </script>
   
   <form on:submit={handleSubmit(fields)}>
-      <!-- Loop the fields and render the correct representation based on field.type -->
-      {#each fields as field}
-          {#if field.type === "Input"}
-              <Input bind:value={field.value} id={field.id} label={field.label} placeholder={field.placeholder} />
+    {#each fields as field}
+      {#if field.type === "Input"}
+        <Input bind:value={field.value} id={field.id} label={field.label} 
+        placeholder={field.placeholder} />
 
-          {:else if field.type === "Select"}
-              <Select bind:value={field.value} id={field.id} label={field.label} options={field.options}/>
+        {:else if field.type === "Select"}
+          <Select bind:value={field.value} id={field.id} label={field.label} 
+          options={field.options}/>
 
-          {:else if field.type === "Date"}
-            <Date bind:value={field.value} id={field.id} label={field.label}/>
-          {/if}
-      {/each}
-      <button type="submit">Lägg till uppgift</button>
+        {:else if field.type === "Date"}
+          <Date bind:value={field.value} id={field.id} label={field.label}/>
+      {/if}
+    {/each}
+    <button type="submit">Lägg till uppgift</button>
   </form>

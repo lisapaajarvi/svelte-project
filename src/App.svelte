@@ -6,7 +6,7 @@
 
 	let todolist = JSON.parse(localStorage.getItem("todolist"))
 	if (todolist === null || undefined) {
-    todolist = [];
+    todolist = [{"date":"2021-03-05","color":"yellow","title":"Gräva bädd A2","description":"Gräva upp bädd som har varit täckt sedan okt -20","time":2},{"date":"2021-04-04","color":"blue","title":"Så bädd A5","description":"Så bondbönor, 2 rader, avstånd 10 cm","time":2}];
 	}
 </script>
 
@@ -19,7 +19,6 @@
 		{#each todolist as item}	
 			<TodoCard {item}>
 				<span slot="date">{item.date}</span>		
-				<span slot="color">{item.color}</span>	
 				<span slot="title">{item.title}</span>
 				<span slot="description">{item.description}</span>
 				<p slot="time">{item.time}</p>
@@ -39,7 +38,6 @@
   
 </main>
 
-
 <style>
 
 	header {
@@ -52,6 +50,7 @@
 		background-color: green;
 		display: flex;
 		justify-content: space-around;
+		height: 100%;
 	}
 
 	.todo-form {
